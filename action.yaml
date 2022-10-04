@@ -1,0 +1,12 @@
+name: "Scan Dockerfile and execute trivy"
+description: "Action to build and scan dockerfiles"
+inputs:
+  TRIVY_SEVERITY:
+    description: "type fo checks to execute using Trivy Acqua Security Open Source"
+    required: true
+    default: "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.TRIVY_SEVERITY}}
