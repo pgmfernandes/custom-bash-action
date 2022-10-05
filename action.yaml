@@ -6,7 +6,11 @@ inputs:
     required: true
     default: "UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL"
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.TRIVY_SEVERITY}}
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/scan-docker.sh
+      shell: bash
+#  using: "docker"
+#  image: "Dockerfile"
+#  args:
+#    - ${{ inputs.TRIVY_SEVERITY}}
