@@ -10,9 +10,10 @@ runs:
   steps:
     - run: |
         chmod +x ${{ github.action_path }}/scan-docker.sh
-        cd ${{ github.action_path }}
+        cd ${{ github.GITHUB_PATH }}
         ls
-        ./scan-docker.sh
+        pwd
+        ${{ github.action_path }}/./scan-docker.sh
       shell: bash
 #  using: "docker"
 #  image: "Dockerfile"
